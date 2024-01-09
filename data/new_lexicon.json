@@ -1,0 +1,211 @@
+{
+    "arkadaş": {
+        "POS": "Noun",
+        "Number": "Singular"
+    },
+    "hediye": {
+        "POS": "Noun",
+        "Number": "Singular"
+    },
+    "romanlar": {
+        "POS": "Noun",
+        "Number": "Plural"
+    },
+    "yemek": {
+        "POS": "Noun",
+        "Number": "Singular"
+    },
+    "anne": {
+        "POS": "Noun",
+        "Number": "Singular"
+    },
+    "destanlar": {
+        "POS": "Noun",
+        "Number": "Plural"
+    },
+    "kültür": {
+        "POS": "Noun",
+        "Number": "Singular"
+    },
+    "yaz": {
+        "POS": "Noun",
+        "Number": "Singular"
+    },
+    "meyve": {
+        "POS": "Noun",
+        "Number": "Singular"
+    },
+    "karpuz": {
+        "POS": "Noun",
+        "Number": "Singular"
+    },
+    "toplantı": {
+        "POS": "Noun",
+        "Number": "Singular"
+    },
+    "ağaç": {
+        "POS": "Noun",
+        "Number": "Singular"
+    },
+    "gece": {
+        "POS": "Noun",
+        "Number": "Singular"
+    },
+    "mehtap": {
+        "POS": "Noun",
+        "Number": "Singular"
+    },
+    "okul": {
+        "POS": "Noun",
+        "Number": "Singular"
+    },
+    "köy": {
+        "POS": "Noun",
+        "Number": "Singular"
+    },
+    "müzik": {
+        "POS": "Noun",
+        "Number": "Singular"
+    },
+    "çanta": {
+        "POS": "Noun",
+        "Number": "Singular"
+    },
+    "taksi": {
+        "POS": "Noun",
+        "Number": "Singular"
+    },
+    "bagaj": {
+        "POS": "Noun",
+        "Number": "Singular"
+    },
+    "sınıf": {
+        "POS": "Noun",
+        "Number": "Singular"
+    },
+    "boy": {
+        "POS": "Noun",
+        "Number": "Singular"
+    },
+    "öğrenci": {
+        "POS": "Noun",
+        "Number": "Singular"
+    },
+    "ders": {
+        "POS": "Noun",
+        "Number": "Singular"
+    },
+    "bahçe": {
+        "POS": "Noun",
+        "Number": "Singular"
+    },
+    "ben": {
+        "POS": "Pronoun",
+        "Person": "1",
+        "PersonNumber": "Singular"
+    },
+    "sen": {
+        "POS": "Pronoun",
+        "Person": "2",
+        "PersonNumber": "Singular"
+    },
+    "o": {
+        "POS": "Pronoun",
+        "Person": "3",
+        "PersonNumber": "Singular"
+    },
+    "biz": {
+        "POS": "Pronoun",
+        "Person": "1",
+        "Number": "Plural"
+    },
+    "siz": {
+        "POS": "Pronoun",
+        "Person": "2",
+        "Number": "Plural"
+    },
+    "onlar": {
+        "POS": "Pronoun",
+        "Person": "3",
+        "Number": "Plural"
+    },
+    "aldım": {
+        "POS": "Verb",
+        "Person": "1",
+        "Number": "Singular"
+    }
+    "okuyorum": {
+        "POS": "Verb",
+        "Person": "1",
+        "Number": "Singular"
+    }
+    "yardım ettim": {
+        "POS": "Verb",
+        "Person": "1",
+        "Number": "Singular"
+    }
+    "anlatır": {
+        "POS": "Verb",
+        "Person": "3"
+    }
+    "katılacak": {
+        "POS": "Verb"
+    }
+    "izlerdik": {
+        "POS": "Verb",
+        "Person": "1",
+        "Number": "Plural"
+    }
+    "geldiniz": {
+        "POS": "Verb",
+        "Person": "2",
+        "Number": "Plural"
+    }
+    "dinleme": {
+        "POS": "Verb",
+        "Person": "2",
+        "Number": "Singular"
+    }
+    "tarihi": {
+        "POS": "Adjective"
+    }
+    "akşam": {
+        "POS": "Adjective"
+    }
+    "milli": {
+        "POS": "Adjective"
+    }
+    "yaz": {
+        "POS": "Adjective"
+    }
+    "bu": {
+        "POS": "Adjective"
+    }
+    "her": {
+        "POS": "Adjective"
+    }
+    "ne": {
+        "POS": "Adjective"
+    }
+    "yüksek": {
+        "POS": "Adjective"
+    }
+    "bizim": {
+        "POS": "Adjective"
+    }
+    "dün": {
+        "POS": "Adverb"
+    }
+    "keyifle": {
+        "POS": "Adverb"
+    }
+    "bence": {
+        "POS": "Adverb"
+    }
+    "gece": {
+        "POS": "Adverb"
+    }
+    
+    
+	
+}

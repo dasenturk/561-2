@@ -57,7 +57,7 @@ for line in CFG:
 
 
 counter = 1
-print(products)
+#print(products)
 dummy_added_products = {}
 for k,v in products.items():
     if(len(k) > 2):
@@ -101,7 +101,7 @@ for k,v in products.items():
 #print(reverse_products)
 #print(dummy_added_products[("Verb", "Past")])
 products = dummy_added_products.copy()
-print(dummy_added_products[("NP",)])
+#print(dummy_added_products[("NP",)])
 
 text = ""
 for k,v in products.items():
@@ -167,7 +167,7 @@ for product_lhs, product_rhs_list in reverse_products.items():
                 
             while (len(to_be_visited) != 0):
                 visited = to_be_visited.pop(0)
-                print(visited)
+                #print(visited)
                 if(len(visited[0]) != 1):
                     #print(visited, "*****")
                     if(product_lhs not in new_reverse_products):
@@ -219,8 +219,8 @@ for k,v in new_reverse_products.items():
             new_products[constituents]=[(k,intermediate)]    
 #print(new_reverse_products)
 
-print(products[("X24","A1sg")])
-print(new_products[("X24","A1sg")])
+#print(products[("X24","A1sg")])
+#print(new_products[("X24","A1sg")])
 cnf_products = products.copy()
 cnf_lexical_rules = lexical_rules.copy()
 for k,v in new_products.items():
@@ -281,7 +281,7 @@ for k,v in cnf_lexical_rules.items():
         else:
             other_text = other_text + lhs[0]+" -> " + k + "\n"
               
-print(cnf_lexical_rules["-Im"])
+#print(cnf_lexical_rules["-Im"])
 with open("CNF_lexical_rules.txt", "w", encoding = "utf-8-sig") as filename:
     filename.write(other_text)
     
@@ -314,14 +314,18 @@ class Node():
 def create_duplicate_node(node):
     copy_node = Node(node.content[:])
     if(node.children == None):
+        #print(node.content, "pasdpads")
         copy_node.children = None
     else:
-        copy_node.children = node.children.copy()
+        copy_node.children = []
+        for child in node.children:
+            copy_node.children.append(create_duplicate_node(child))
+        #copy_node.children = node.children.copy()
     copy_node.bracket_notation = node.bracket_notation[:]
     copy_node.intermediate = node.intermediate
     
     return copy_node
-
+"""
 def copy(node):
     #print(node.content)
     if(node == None):
@@ -338,6 +342,7 @@ def copy(node):
     
     #print(node.content, node.intermediate)
     return 
+"""
 class Grammar():
     def __init__(self, products, lexical_rules):
         self.products = products
@@ -402,7 +407,7 @@ def turn_into_cfg_tree_step_2(node):
         return
     
     if(node.content.startswith("X")):
-        print(node.content,"ömöm")
+        #print(node.content,"ömöm")
         
         actual_rule = reverse_cnf_products[node.content]
         Parent = node.parent
@@ -459,14 +464,15 @@ def traverse_tree(node):
     #    right_child = print_tree(node.right_child)
     #print(node.content)
     if (node.children == None):
-        node.bracket_notation = ""
+        #node.bracket_notation = ""
+       # print(node, node.content)   
         #print(node.content, node.intermediate)
         return
     
     for child in node.children:
         traverse_tree(child)
 #    node.bracket_notation = ""
-    print(node, node.content)   
+    #print(node, node.content)   
     #print(node.content, node.intermediate)
     return 
     
@@ -476,9 +482,10 @@ def cky_parse(grammar, words):
         
         possiblities = grammar.lexical_rules[words[i]]
         #print(possiblities)
+        primary_node = Node(words[i])
         for pos in possiblities:
-            primary_node = Node(words[i])
             copy_primary_node = create_duplicate_node(primary_node)
+            #print(copy_primary_node)
             if(type(pos) == str):
                 node = Node(pos)
                 node.children = [copy_primary_node]
@@ -490,7 +497,8 @@ def cky_parse(grammar, words):
                 node.intermediate = pos[1]
             #table[i][i+1].append((pos, None, None))
             table[i][i+1].append(node)
-            print(primary_node.content, node.content, node.intermediate)
+            #print(node,"etretrret")
+            
         #for node in table[i][i+1]:
             #print(node.content)
             #print(node.intermediate)
@@ -503,32 +511,38 @@ def cky_parse(grammar, words):
                     for m in range(len(table[k][j])):
                         #print(table[i][k][l].content, table[k][j][m].content, i,k,j)
                         if((table[i][k][l].content, table[k][j][m].content) in grammar.products):
-                            
                             derivations = grammar.products[(table[i][k][l].content, table[k][j][m].content)]
+                           # print(derivations, i,k,j)
                             for derivation in derivations:
                                 #print(table[i][k][l].content, table[k][j][m].content, i,k,j)
                                 if(type(derivation) == str):
-                                    print(table[i][k][l].content, table[k][j][m].content, i,k,j, "??", derivation)
+                                   # print(table[i][k][l].content, table[k][j][m].content, i,k,j, "??", derivation)
                                     node = Node(derivation)
+                                    
+                                        
                                     copy_node_1 = create_duplicate_node(table[i][k][l])
                                     copy_node_2 = create_duplicate_node(table[k][j][m])
-                                    if(table[i][k][l].content == "X24" and table[k][j][m].content == "A1sg"):
-                                        print(copy_node_1, copy_node_2, table[i][k][l], table[k][j][m], derivation)
+                                   # if(derivation == "S" and table[k][j][m].content == "PRED"):
+                                       # print(copy_node_1, "xdxd", node)
+                                   # if(table[i][k][l].content == "X24" and table[k][j][m].content == "A1sg"):
+                                        #print(copy_node_1, copy_node_2, table[i][k][l], table[k][j][m], derivation)
                                     #node.children = [table[i][k][l], table[k][j][m]]
                                     node.children = [copy_node_1, copy_node_2]
+                                    #print(copy_node_1.children,l,m, "qweqwqew")
                                     #table[i][k][l].parent = node
                                     #table[k][j][m].parent = node
                                     copy_node_1.parent = node
                                     copy_node_2.parent = node
                                     table[i][j].append(node)            
                                 else:
-                                    print(table[i][k][l].content, table[k][j][m].content, i,k,j, derivation)
+                                   # print(table[i][k][l].content, table[k][j][m].content, i,k,j, derivation)
                                     node = Node(derivation[0])
                                     copy_node_1 = create_duplicate_node(table[i][k][l])
                                     copy_node_2 = create_duplicate_node(table[k][j][m])
-                                    
-                                    if(table[i][k][l].content == "X24" and table[k][j][m].content == "A1sg"):
-                                        print(copy_node_1, copy_node_2, table[i][k][l], table[k][j][m], derivation, "asd")
+                                    #if(table[k][j][m].content == "PRED"):
+                                      #  print(copy_node_1, "xddd")
+                                    #if(table[i][k][l].content == "X24" and table[k][j][m].content == "A1sg"):
+                                       # print(copy_node_1, copy_node_2, table[i][k][l], table[k][j][m], derivation, "asd")
                                     #node.children = [table[i][k][l], table[k][j][m]]
                                     node.children = [copy_node_1, copy_node_2]
                                     node.intermediate = derivation[1]
@@ -545,21 +559,21 @@ def make_tree(table):
     final_cell = table[0][-1]
     #for node in final_cell:
         #print(node.content,"*****")
-    childrens = []
+    trees = []
     for node in final_cell:
         if node.content == "S":
-            childrens.append(node.children)
+            trees.append(node)
             #copy_node = create_duplicate_node(node)
             #clear_bracket_notation(node)
             #clear_bracket_notation(copy_node)
             #print("xd")
-            print_tree(node)
-            print(node.bracket_notation, "asdsd")
+            #print_tree(node)
+            #print(node.bracket_notation, "asdsd")
             
             turn_into_cfg_tree_step_1(node)
             #turn_into_cfg_tree_step_1(copy_node)
-           # print_tree(node)
-           # print(node.bracket_notation, "asdasd")
+            print_tree(node)
+            #print(node.bracket_notation, "asdasd")
             #print(node.bracket_notation,"\\\\")
             #print_tree(copy_node)
             #print(copy_node.bracket_notation, "**")
@@ -572,27 +586,27 @@ def make_tree(table):
             #else:
             #    boolean = False
             counter = 0
-            #while(boolean == True and counter < 5):
-            #    print("asd")
-            #    print_tree(node)
-            #    print(node.bracket_notation,"wewer")
-            #    turn_into_cfg_tree_step_2(node)
-            #    print_tree(node)
-            #    print(node.bracket_notation,"arewe")
-            #    print("X"  in node.bracket_notation)
-            #    if("X" in node.bracket_notation):
-            #        boolean = True
-            #        clear_bracket_notation(node)
-            #    else:
-            #        print("lol")
-            #        boolean = False
-            #    print(boolean)
-            #    counter += 1
-            turn_into_cfg_tree_step_2(node)
-            print_tree(node)
-            print(node.bracket_notation,"arewe")
+            while(boolean == True and counter < 5):
+                #print("asd")
+                print_tree(node)
+                #print(node.bracket_notation,"wewer")
+                turn_into_cfg_tree_step_2(node)
+                print_tree(node)
+                #print(node.bracket_notation,"arewe")
+                #print("X"  in node.bracket_notation)
+                if("X" in node.bracket_notation):
+                    boolean = True
+                    clear_bracket_notation(node)
+                else:
+                    #print("lol")
+                    boolean = False
+                #print(boolean)
+                counter += 1
             #turn_into_cfg_tree_step_2(node)
-           # print_tree(node)
+            #print_tree(node)
+            #print(node.bracket_notation,"arewe")
+            #turn_into_cfg_tree_step_2(node)
+            #print_tree(node)
             #print(node.bracket_notation,"arewe")
             #while(boolean == True):
             #    print("asd")
@@ -611,19 +625,55 @@ def make_tree(table):
     #        print(child.children, child.content)
     #print(childrens)
     
-    return possible_parses
-
+    return possible_parses, trees
+"""
+def check_agreement(node):
+    #print(node.content)
+    if(node == None):
+        return True
+    #if(node.left_child == None and node.right_child == None):
+    #   print(node.content)
+    #   return node
+    
+    #else:
+    #    print(node.content)
+    #    left_child = print_tree(node.left_child)
+    #    right_child = print_tree(node.right_child)
+    #print(node.content)
+    if (node.children == None):
+        #node.bracket_notation = ""
+       # print(node, node.content)   
+        #print(node.content, node.intermediate)
+        return True
+    
+    for child in node.children:
+        if(check_agreement(child) == False):
+            return False
+    
+    for child in node.children
+#    node.bracket_notation = ""
+    #print(node, node.content)   
+    #print(node.content, node.intermediate)
+    return 
+"""
 #lexical_rules = {"dün": ["Adv","ADVP"], "al": ["Verb"], "-dI": ["Past"], "-m": ["A1sg"] }
 #products = {("Verb","Past"): ["PRED"], ("PRED", "A1sg"): ["PRED"], ("ADVP", "PRED"): ["S"]}
 grammar = Grammar(cnf_products, cnf_lexical_rules)
 
-words = ["ben", "yardım et", "-dI", "-m"]
+words = ["dün", "arkadaş","-Im", "-yA", "bir", "hediye","al","-dI", "-m"]
 node = Node("xd")
+node_2 = Node("asd")
+node.intermediate = ["asd"]
+node.children = [node_2]
 copy_node = create_duplicate_node(node)
-copy_nnode = create_duplicate_node(node)
-
+node.intermediate = ["bnndf"]
+#print(node.children, copy_node.children, "asdadwerwer")
+#print(node.intermediate, copy_node.intermediate, "asdadwerwer")
 table = cky_parse(grammar,words)
-parses = make_tree(table)
-print(parses[0])
-print(parses[1])
+parses,trees = make_tree(table)
+#print(parses[0])
+#print(parses[1])
+if len(parses) != 0:
+    for parse in parses:
+        print(parse)
 print(len(parses))

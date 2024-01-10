@@ -15,30 +15,67 @@ S -> SUBJP ADVP DATP PRED
 S -> SUBJP PREPP PRED
 S -> SUBJP ACCP PRED
 S -> ADVP DATP PRED
+S -> SUBJP DATP NOBJP PRED
 S -> PRED
+S -> SUBJP NOBJP PRED
+S -> ABLP SUBJP ADVP PRED
+S -> DATP PRED Mi2pl
+S -> LOCP ADVP ACCP PRED
+S -> SUBJP DATP ADVP PRED
+S -> SUBJP DATP PRED
+S -> INSTP NOBJP PRED
 SUBJP -> NP
 NOBJP -> NP
 ACCP -> NP Accusative
+ACCP -> ADJP ACCP
+ACCP -> ACCP Conj ACCP
 DATP -> NP Dative
 LOCP -> NP Locative
 ABLP -> NP Ablative
 INSTP -> NP Instrumental
 ADVP -> Adv
 ADVP -> ADVP VP
+ADVP -> ADJP ADVP
 PREPP -> NP Prep
 PREPP -> Prep
 PRED -> NP Copular
+PRED -> LOCP PastCop
 PRED -> VP
+PRED -> VP NEG
+PRED -> Verb Past MP
+PRED -> Verb Future MP
+PRED -> Verb Present MP
+PRED -> Verb Progressive MP
+VP -> Verb Present Past A1pl
+VP -> Verb
 VP -> Verb Past A1sg
 VP -> Verb Past A2sg
 VP -> Verb Past A3sg
-VP -> Verb
+VP -> Verb Past A1pl
+VP -> Verb Past A2pl
+VP -> Verb Past A3pl
+VP -> Verb Present A1sg
+VP -> Verb Present A2sg
+VP -> Verb Present A3sg
+VP -> Verb Present A1pl
+VP -> Verb Present A2pl
+VP -> Verb Present A3pl
 VP -> Verb Progressive A1sg
 VP -> Verb Progressive A2sg
 VP -> Verb Progressive A3sg
+VP -> Verb Progressive A1pl
+VP -> Verb Progressive A2pl
+VP -> Verb Progressive A3pl
+VP -> Verb Future A1sg
+VP -> Verb Future A2sg
+VP -> Verb Future A3sg
+VP -> Verb Future A1pl
+VP -> Verb Future A2pl
+VP -> Verb Future A3pl
 NP -> ADJP NP
 NP -> Noun
 NP -> Pronoun
+NP -> NP NP
 NP -> NP Conj NP
 NP -> NP P1sg
 NP -> NP P2sg
@@ -47,9 +84,16 @@ NP -> NP P1pl
 NP -> NP P2pl
 NP -> NP P3pl
 NP -> Noun Plural
-ACCP -> ACCP Conj ACCP
+MP -> Mi1sg
+MP -> Mi2sg
+MP -> Mi3sg
+MP -> Mi1pl
+MP -> Mi2pl
+MP -> Mi3pl
 ADJP -> PREPP ADJP
 ADJP -> Adj
+ADJP -> ADJP Rel
+ADJP -> PREPP ADJP
 Plural -> -lAr
 Dative -> -yA | -nA 
 Locative -> -dA | -ndA 
@@ -69,15 +113,29 @@ A3sg -> -Empty
 A1pl -> -yIz | -k
 A2pl -> -sInIz | -nIz
 A3pl -> -lAr
+Rel -> kI
+NEG -> mA
+Mi1sg -> mIyIm
+Mi2sg -> mIsIn
+Mi3sg -> mI
+Mi1pl -> mIyIz
+Mi2pl -> mIsInIz
+Mi3pl -> mI
 Present -> -Ir | -Ar
 Progressive -> -Iyor
 Future -> -yAcAk
 Past -> -dI
 Copular -> -dIr
-Noun -> arkadaş | hediye | roman | keyif | bir | tarih | destan | meyve | insan | yemek
-Verb -> al | oku | yardım et | yaz | anlat
-Adj -> bir | akşam | milli | güzel | yaz | tarihi
-Adv -> dün | bence
-Pronoun -> ben | sen | o | biz | siz | onlar
-Prep -> bir | için | en
-Conj -> ve | veya | de | da
+PastCop -> -ydI
+Noun -> arkadaş | hediye | roman | keyif | bir | tarih | destan | meyve | insan | yemek | kültür | karpuz | toplantı | ağaç | mehtap | alt
+Noun -> okul | köy | uzak | ses | müzik | anne | çanta | taksi | bagaj | sınıf | boy | öğrenci | ders | bahçe
+Verb -> al | oku | yardım et | yaz | anlat | katıl | izle | gel | dinle | unut | koş | getir | gül | bin | sarar | patla
+Adj -> bir | akşam | milli | güzel | yaz | tarihi | bu | her | ne | son | epeyce | yüksek | herhangi | uzun | bütün | geniş | diğer | sarı
+Adj -> yeni | büyük
+Adv -> dün | bence | gece | zaman | henüz | koşarak | önce | çok | kıs kıs | aşağı | yukarı | içeri | dışarı | nereye | nasıl | ne | kim | ne zaman
+Pronoun -> ben | sen | o | biz | siz | onlar | bura | bu | bazı | kim | birçok | birkaç | hiçbiri | falan filan | şundan bundan | şu bu
+Prep -> bir | için | en | ancak | başka | beri | dair | değil | değin | dek | diye | doğru | dolayı | evvel | gayri | gibi| göre | ile
+Prep -> kadar | karşı | karşın | önce | ötürü | öte | rağmen | sadece | sanki | sonra | sıra | üzere | yalnız
+Conj -> ve | veya | de | da | ama | ancak | belki | bile | çünkü | dahi | demek | dışında | eğer | fakat | gibi | ha | hatta | hem | yoksa
+Conj -> ile | ki | lakin | madem | mademki | meğerse | meğer | neyse | oysa | oysaki | veyahut | ya | ya da | yahut | yalnız | yani | yok | zira
+Int -> abo | aferin | alo | ay | bari | çüş | eyvah | güya | hayda | haydi | imdat | keşke | la | lan | of | oha | öf | pardon | şey | ulan | üf | vay | vah | yuh

@@ -1,0 +1,8 @@
+S -> SUBJP PRED
+S -> SUBJP PREPP PRED
+NP -> NP P1sg
+NP -> NP P2sg
+NP -> NP P3sg
+NP -> NP P1pl
+NP -> NP P2pl
+NP -> NP P3pl

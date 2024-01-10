@@ -1,0 +1,7 @@
+Present -> present
+Progressive -> progressive
+Future -> future
+Past -> past
+Copular -> present
+dün -> past
+yarın -> future
